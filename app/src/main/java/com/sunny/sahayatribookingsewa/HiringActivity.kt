@@ -1,10 +1,12 @@
 package com.sunny.sahayatribookingsewa
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import java.util.*
 
 class HiringActivity : AppCompatActivity() {
 
@@ -19,6 +21,9 @@ class HiringActivity : AppCompatActivity() {
 
     private val vehicleType =
         arrayOf("Bus", "Micro", "Jeep")
+
+    private val hireDays =
+        arrayOf("1", "2", "3")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +43,14 @@ class HiringActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //date
+        tvCalendar.setOnClickListener{
+            loadCalendar()
+        }
+
         //Array Adapter
         val vehicleAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, vehicleType)
-        val dayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, vehicleType)
+        val dayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, hireDays)
 
         //Setting the adapter to spinner's adapter
         spVhType.adapter = vehicleAdapter
@@ -84,4 +94,21 @@ class HiringActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun loadCalendar() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this, {
+                    view, year, monthOfYear , dayOfMonth ->
+                tvCalendar.text = "$dayOfMonth/$monthOfYear/$year"
+            },
+            year,
+            month,
+            day
+        )
+        datePickerDialog.show()    }
 }
