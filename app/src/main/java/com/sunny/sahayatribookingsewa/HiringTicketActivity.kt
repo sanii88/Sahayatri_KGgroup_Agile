@@ -25,7 +25,7 @@ class HiringTicketActivity : AppCompatActivity() {
         btnConfirmHiring = findViewById(R.id.btnConfirmHiring)
 
         btnConfirmHiring.setOnClickListener {
-            val intent = Intent(this, HiringActivity::class.java)
+            val intent = Intent(this, MainDashboard::class.java)
             startActivity(intent)
         }
 
