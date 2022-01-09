@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SahayatriBookingSewa</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="registerUser">No account ?<u>signup here</u>.</string>
+
+    <string-array name="routes">
+        <item>Kathmandu-Pokhara</item>
+        <item>Kathmandu-Chitwan</item>
+        <item>Kathmandu-Butwal</item>
+        <item>Kathmandu-Lumbini</item>
+    </string-array>
+
+    <string-array name="date">
+        <item>Today</item>
+        <item>Tomorrow</item>
+    </string-array>
+
+    <string-array name="vehicleType">
+        <item>Bus</item>
+        <item>Micro</item>
+        <item>Jeep</item>
+    </string-array>
+
+    <string-array name="seats">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>
