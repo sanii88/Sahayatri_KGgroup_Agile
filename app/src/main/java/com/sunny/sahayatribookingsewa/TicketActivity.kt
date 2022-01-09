@@ -32,7 +32,7 @@ class TicketActivity : AppCompatActivity() {
         btnConfirmBooking = findViewById(R.id.btnConfirmBooking)
 
         btnConfirmBooking.setOnClickListener {
-            val intent = Intent(this, HomeFragment::class.java)
+            val intent = Intent(this, MainDashboard::class.java)
             startActivity(intent)
         }
 
