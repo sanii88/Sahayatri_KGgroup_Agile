@@ -30,7 +30,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var tvCalendar: TextView
 
     private val route =
-        arrayOf("Kathmandu-Pokhara", "Kathmandu-Chitwan", "Kathmandu-Butwal", "Kathmandu-Lumbini")
+        arrayOf("Select none" , "Kathmandu-Pokhara", "Kathmandu-Chitwan", "Kathmandu-Butwal", "Kathmandu-Lumbini")
     private lateinit var spRoute: Spinner
 
     private val vehicleType = arrayOf("Bus", "Micro", "Jeep")
@@ -154,7 +154,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val datePickerDialog = DatePickerDialog(
             requireContext(), {
                 view, year, monthOfYear , dayOfMonth ->
-                tvCalendar.text = "Selected date : $dayOfMonth/$monthOfYear/$year"
+                tvCalendar.text = "$dayOfMonth/$monthOfYear/$year"
             },
             year,
             month,
