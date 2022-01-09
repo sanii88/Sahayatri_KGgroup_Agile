@@ -1,9 +1,11 @@
 package com.sunny.sahayatribookingsewa
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.sunny.sahayatribookingsewa.ui.home.HomeFragment
 
 class TicketActivity : AppCompatActivity() {
 
@@ -29,6 +31,10 @@ class TicketActivity : AppCompatActivity() {
         tvTicketContact = findViewById(R.id.tvTicketContact)
         btnConfirmBooking = findViewById(R.id.btnConfirmBooking)
 
+        btnConfirmBooking.setOnClickListener {
+            val intent = Intent(this, HomeFragment::class.java)
+            startActivity(intent)
+        }
 
     }
 }
