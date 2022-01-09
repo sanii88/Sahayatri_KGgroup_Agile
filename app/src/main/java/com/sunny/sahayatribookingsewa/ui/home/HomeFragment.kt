@@ -8,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sunny.sahayatribookingsewa.BoardingActivity
+import com.sunny.sahayatribookingsewa.HiringActivity
 import com.sunny.sahayatribookingsewa.R
-import com.sunny.sahayatribookingsewa.TicketActivity
 import com.sunny.sahayatribookingsewa.databinding.FragmentHomeBinding
-import com.sunny.sahayatribookingsewa.ui.boarding.BoardingFragment
-import com.sunny.sahayatribookingsewa.ui.dashboard.DashboardFragment
-import org.w3c.dom.Text
 import java.util.*
 
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -26,6 +22,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private val binding get() = _binding!!
 
     private lateinit var btnBooking: Button
+    private lateinit var btnHire: Button
     private lateinit var tvRoute: TextView
     private lateinit var tvDate: TextView
     private lateinit var tvVehicleType: TextView
@@ -61,10 +58,16 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         spVehicleType = root.findViewById(R.id.spVehicleType)
         tvSeat = root.findViewById(R.id.tvSeat)
         spSeat = root.findViewById(R.id.spSeat)
+        btnHire = root.findViewById(R.id.btnHire)
 
         btnBooking = root.findViewById(R.id.btnBooking)
         btnBooking.setOnClickListener {
             val intent = Intent(view?.context, BoardingActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnHire.setOnClickListener {
+            val intent = Intent(view?.context, HiringActivity::class.java)
             startActivity(intent)
         }
 

@@ -19,11 +19,17 @@
         android:theme="@style/Theme.SahayatriBookingSewa"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".HiringTicketActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HiringActivity"
+            android:exported="true" />
+        <activity
             android:name=".BoardingActivity"
             android:exported="true" />
         <activity
             android:name=".TicketActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
