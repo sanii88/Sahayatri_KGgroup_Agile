@@ -13,6 +13,7 @@ import com.sunny.sahayatribookingsewa.BoardingActivity
 import com.sunny.sahayatribookingsewa.HiringActivity
 import com.sunny.sahayatribookingsewa.R
 import com.sunny.sahayatribookingsewa.databinding.FragmentHomeBinding
+import com.sunny.sahayatribookingsewa.util.SavedData
 import java.util.*
 
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -20,24 +21,35 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
+    val price: Int = 300
     private lateinit var btnBooking: Button
     private lateinit var btnHire: Button
-    private lateinit var tvRoute: TextView
-    private lateinit var tvDate: TextView
-    private lateinit var tvVehicleType: TextView
-    private lateinit var tvSeat: TextView
     private lateinit var tvCalendar: TextView
+    private lateinit var tvTotalPrice: TextView
 
     private val route =
-        arrayOf("Select none" , "Kathmandu-Pokhara", "Kathmandu-Chitwan", "Kathmandu-Butwal", "Kathmandu-Lumbini")
+        arrayListOf<String>(
+            "Select none",
+            "Kathmandu-Pokhara",
+            "Kathmandu-Chitwan",
+            "Kathmandu-Butwal",
+            "Kathmandu-Lumbini"
+        )
     private lateinit var spRoute: Spinner
 
-    private val vehicleType = arrayOf("Bus", "Micro", "Jeep")
+    private var vehicleType = arrayListOf<String>("Bus", "Micro", "Jeep")
     private lateinit var spVehicleType: Spinner
 
-    private val seat = arrayOf("1", "2", "3", "4")
+    private val seat = arrayListOf<Int>(1,2,3,4)
     private lateinit var spSeat: Spinner
+
+    companion object {
+        var routes: String? = null
+        var date: String? = null
+        var vehicle_type: String? = null
+        var seatNo: Int? = null
+        val total: Float? = null
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,20 +62,22 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        tvRoute = root.findViewById(R.id.tvRoute)
         spRoute = root.findViewById(R.id.spRoute)
-        tvDate = root.findViewById(R.id.tvDate)
         tvCalendar = root.findViewById(R.id.tvCalendar)
-        tvVehicleType = root.findViewById(R.id.tvVehicleType)
         spVehicleType = root.findViewById(R.id.spVehicleType)
-        tvSeat = root.findViewById(R.id.tvSeat)
         spSeat = root.findViewById(R.id.spSeat)
         btnHire = root.findViewById(R.id.btnHire)
+        tvTotalPrice = root.findViewById(R.id.tvTotalPrice)
+
 
         btnBooking = root.findViewById(R.id.btnBooking)
         btnBooking.setOnClickListener {
-            val intent = Intent(view?.context, BoardingActivity::class.java)
-            startActivity(intent)
+
+//            SavedData.route = spRoute.selectedItem.toString()
+//            SavedData.seatNo = spSeat.selectedItem as Int
+//            SavedData.vehicleType = spVehicleType.selectedItem.toString()
+
+             saveBooking()
         }
 
         btnHire.setOnClickListener {
@@ -72,14 +86,16 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         //date
-        tvCalendar.setOnClickListener{
+        tvCalendar.setOnClickListener {
             loadCalendar()
         }
 
         //Array Adapter
-        val vehicleAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, vehicleType)
-        val routeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, route)
-        val seatAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, seat)
+        val vehicleAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, vehicleType)
+        val routeAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, route)
+        val seatAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, seat)
 
         //Setting the adapter to spinner's adapter
         spVehicleType.adapter = vehicleAdapter
@@ -95,8 +111,12 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 position: Int,
                 id: Long
             ) {
-                val selectedItem = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(),"Selected item : $selectedItem",Toast.LENGTH_SHORT).show()
+                vehicle_type = parent?.getItemAtPosition(position).toString()
+                Toast.makeText(
+                    requireContext(),
+                    "Selected item : $vehicle_type",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -104,6 +124,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
             }
 
         }
+
 
         //for route
         spRoute.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -113,8 +134,12 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 position: Int,
                 id: Long
             ) {
-                val selectedItem = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(),"Selected item : $selectedItem",Toast.LENGTH_SHORT).show()
+                routes = parent?.getItemAtPosition(position).toString()
+                Toast.makeText(
+                    requireContext(),
+                    "Selected item : $routes",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -131,8 +156,32 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 position: Int,
                 id: Long
             ) {
-                val selectedItem = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(),"Selected item : $selectedItem",Toast.LENGTH_SHORT).show()
+
+                seatNo = parent?.getItemAtPosition(position).toString().toInt()
+                Toast.makeText(
+                    requireContext(),
+                    "Selected item : $seatNo",
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val seatNo = parent?.getItemAtPosition(position).toString()
+
+                var bus : Int = 300
+                var micro : Int = 400
+                var jeep : Int = 500
+                var total = 0
+
+                val noOfSeat= spSeat.selectedItem.toString().toInt()
+
+                if(spVehicleType.selectedItem.toString().equals("Bus"))
+                    total = bus * noOfSeat
+                else if(spVehicleType.selectedItem.toString().equals("Micro"))
+                    total = micro * noOfSeat
+                else if(spVehicleType.selectedItem.toString().equals("Jeep"))
+                    total = jeep * noOfSeat
+
+                tvTotalPrice.text = total.toString()
+
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -145,6 +194,17 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         return root
     }
 
+    private fun saveBooking() {
+
+        SavedData.setData("routes", routes.toString())
+        SavedData.setData("date", date.toString())
+        SavedData.setData("vehicleType", vehicle_type.toString())
+        SavedData.setData("seatNo", seatNo.toString())
+
+            val intent = Intent(view?.context, BoardingActivity::class.java)
+            startActivity(intent)
+    }
+
     private fun loadCalendar() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -152,9 +212,9 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(
-            requireContext(), {
-                view, year, monthOfYear , dayOfMonth ->
-                tvCalendar.text = "$dayOfMonth/$monthOfYear/$year"
+            requireContext(), { view, year, monthOfYear, dayOfMonth ->
+                date = "$dayOfMonth/$monthOfYear/$year"
+                tvCalendar.text = date
             },
             year,
             month,
