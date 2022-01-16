@@ -8,5 +8,5 @@ data class BookingTicket(
     var departure_date: String? = null,
     var boarding_person: String? = null,
     var boarding_point: String? = null,
-    var contact: String? = null,
+    var contact: String? = null
 )
