@@ -1,24 +1,29 @@
 package com.sunny.sahayatribookingsewa.ui.notifications
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.sunny.sahayatribookingsewa.R
+import com.sunny.sahayatribookingsewa.*
 import com.sunny.sahayatribookingsewa.databinding.FragmentNotificationsBinding
+import com.sunny.sahayatribookingsewa.util.SavedData
 
 class NotificationsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var tvName : TextView
+    private lateinit var tvContact : TextView
+    private lateinit var btnEditProfile : Button
+    private lateinit var btnHistory : Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +36,22 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        tvName = root.findViewById(R.id.tvName)
+        tvContact = root.findViewById(R.id.tvContact)
+        btnEditProfile = root.findViewById(R.id.btnEditProfile)
+        btnHistory = root.findViewById(R.id.btnHistory)
+
+
+        btnEditProfile.setOnClickListener {
+            val intent = Intent(view?.context, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnHistory.setOnClickListener {
+            val intent = Intent(view?.context, ViewTicketActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 

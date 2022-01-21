@@ -1,150 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/main"
     tools:context=".BookingTicketActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvmyticket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Travel route:"
-            />
+        android:layout_height="60dp"
+        android:text="My ticket"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:letterSpacing="0.1"
+        android:background="@color/lightmain"
+        android:textColor="@color/main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="333dp"
+        android:layout_height="610dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/tvmyticket"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/ticketbg">
+
         <TextView
             android:id="@+id/tvTicketRoute"
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:text="Kathmandu-Pokhara"
+            android:textColor="@color/orange2"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Travel date:"
-            />
-        <TextView
-            android:id="@+id/tvTicketDate"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/linebg"
+            android:layout_width="301dp"
+            android:layout_height="5dp"
+            android:src="@drawable/linebgg"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@id/ll2myticket"
+            app:layout_constraintTop_toBottomOf="@id/tvTicketRoute"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv3"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:id="@+id/ll2myticket"
+            android:layout_below="@+id/tvTicketRoute"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Vehicle type:"
-            />
-        <TextView
-            android:id="@+id/tvTicketVehicleType"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/linebg"
+            app:layout_constraintRight_toLeftOf="@+id/ll3myticket"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Total seats:"
-            />
-        <TextView
-            android:id="@+id/tvTicketSeat"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:gravity="left"
+                android:textColor="@color/main"
+                android:letterSpacing="0.1"
+                android:layout_height="wrap_content"
+                android:text="Travel date:" />
+            <TextView
+                android:id="@+id/tvTicketDate"
+                android:gravity="left"
+                android:layout_width="120dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="August 10, 2021"/>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv5"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:id="@+id/ll3myticket"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Boarding point:"
-            />
-        <TextView
-            android:id="@+id/tvTicketBoardingPoint"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/ll2myticket"
+            app:layout_constraintTop_toBottomOf="@id/linebg"
+            app:layout_constraintRight_toRightOf="parent">
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:gravity="right"
+                android:textColor="@color/main"
+                android:letterSpacing="0.1"
+                android:layout_height="wrap_content"
+                android:text="Vehicle type:"
+                />
+            <TextView
+                android:id="@+id/tvTicketVehicleType"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:layout_width="120dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Bus"/>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv6"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:id="@+id/ll4myticket"
+            android:orientation="vertical"
+            android:layout_below="@+id/ll3myticket"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Boarding person:"
-            />
-        <TextView
-            android:id="@+id/tvTicketBoardingPerson"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/ll2myticket"
+            app:layout_constraintRight_toLeftOf="@+id/ll5myticket"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll6myticket">
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:gravity="left"
+                android:textColor="@color/main"
+                android:letterSpacing="0.1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total seats:"
+                />
+            <TextView
+                android:id="@+id/tvTicketSeat"
+                android:gravity="left"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="04"/>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv7"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:id="@+id/ll5myticket"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1"
-            android:text="Contact info:"
-            />
-        <TextView
-            android:id="@+id/tvTicketContact"
-            android:layout_width="100dp"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toRightOf="@+id/ll4myticket"
+            app:layout_constraintTop_toBottomOf="@id/ll3myticket"
+            app:layout_constraintRight_toRightOf="parent">
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:gravity="right"
+                android:textColor="@color/main"
+                android:letterSpacing="0.1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Boarding point:"
+                />
+            <TextView
+                android:id="@+id/tvTicketBoardingPoint"
+                android:gravity="right"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Kalanki"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll6myticket"
+            android:orientation="vertical"
+            android:layout_below="@+id/ll5myticket"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ll7myticket"
+            app:layout_constraintTop_toBottomOf="@id/ll4myticket">
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:gravity="left"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/main"
+                android:letterSpacing="0.1"
+                android:text="Boarding person:"
+                />
+            <TextView
+                android:id="@+id/tvTicketBoardingPerson"
+                android:gravity="left"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Suman Basnet"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btnConfirmBooking"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="Confirm Booking"/>
+        <LinearLayout
+            android:id="@+id/ll7myticket"
+            android:orientation="vertical"
+            android:layout_below="@+id/ll6myticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toRightOf="@+id/ll6myticket"
+            app:layout_constraintTop_toBottomOf="@id/ll5myticket"
+            app:layout_constraintRight_toRightOf="parent">
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
 
-</LinearLayout>
+                android:letterSpacing="0.1"
+                android:textColor="@color/main"
+                android:text="Contact info:"
+                />
+            <TextView
+                android:id="@+id/tvTicketContact"
+                android:gravity="right"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="9841009881"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/llinee"
+            android:layout_width="250dp"
+            android:layout_height="5dp"
+            android:src="@drawable/linebgg"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toTopOf="@id/btnConfirmBooking"
+            app:layout_constraintTop_toBottomOf="@id/ll7myticket"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <Button
+            android:id="@+id/btnConfirmBooking"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/ll7myticket"
+            android:gravity="center"
+            android:background="@drawable/btnbg1"
+            android:text="Confirm Ticket"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="3"
+            android:shadowDy="2"
+            app:backgroundTint="@null"
+            android:layout_marginTop="150dp"
+            app:layout_constraintTop_toBottomOf="@id/ll7myticket"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

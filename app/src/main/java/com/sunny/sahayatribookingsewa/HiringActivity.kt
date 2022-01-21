@@ -13,6 +13,7 @@ import java.util.*
 class HiringActivity : AppCompatActivity() {
 
     private lateinit var btnHiring: Button
+    private lateinit var btnBooking1: Button
     private lateinit var tvVhType: TextView
     private lateinit var tvDays: TextView
     private lateinit var tvDate: TextView
@@ -26,6 +27,7 @@ class HiringActivity : AppCompatActivity() {
 
     companion object {
         var vehicle_type: String? = null
+        var date: String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class HiringActivity : AppCompatActivity() {
         setContentView(R.layout.activity_hiring)
 
         btnHiring = findViewById(R.id.btnHiring)
+        btnBooking1 = findViewById(R.id.btnBooking1)
         tvVhType = findViewById(R.id.tvVhType)
         tvDays = findViewById(R.id.tvDays)
         tvDate = findViewById(R.id.tvDate)
@@ -40,6 +43,11 @@ class HiringActivity : AppCompatActivity() {
         spVhType = findViewById(R.id.spVhType)
         etHireDays = findViewById(R.id.etHireDays)
         etContactInfo = findViewById(R.id.etContactInfo)
+
+        btnBooking1.setOnClickListener {
+            val intent = Intent(this, MainDashboard::class.java)
+            startActivity(intent)
+        }
 
         btnHiring.setOnClickListener {
             saveHiring()
@@ -87,7 +95,7 @@ class HiringActivity : AppCompatActivity() {
 
         SavedData.setData("HireDays", hireDays)
         SavedData.setData("Contact", contact)
-        SavedData.setData("date", HomeFragment.date.toString())
+        SavedData.setData("date", date.toString())
         SavedData.setData("vehicleType", vehicle_type.toString())
 
         val intent = Intent(this, HiringTicketActivity::class.java)
@@ -103,8 +111,9 @@ class HiringActivity : AppCompatActivity() {
 
         val datePickerDialog = DatePickerDialog(
             this, { view, year, monthOfYear, dayOfMonth ->
-                HomeFragment.date = "$dayOfMonth/$monthOfYear/$year"
-                tvCalendar.text = HomeFragment.date
+                val monthOfYear = monthOfYear + 1
+                date = "$dayOfMonth/$monthOfYear/$year"
+                tvCalendar.text = date
             },
             year,
             month,

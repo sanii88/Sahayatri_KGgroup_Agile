@@ -112,11 +112,11 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 id: Long
             ) {
                 vehicle_type = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(
-                    requireContext(),
-                    "Selected item : $vehicle_type",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Selected item : $vehicle_type",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -135,11 +135,11 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 id: Long
             ) {
                 routes = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(
-                    requireContext(),
-                    "Selected item : $routes",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Selected item : $routes",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -158,11 +158,11 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
             ) {
 
                 seatNo = parent?.getItemAtPosition(position).toString().toInt()
-                Toast.makeText(
-                    requireContext(),
-                    "Selected item : $seatNo",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Selected item : $seatNo",
+//                    Toast.LENGTH_SHORT
+//                ).show()
 //                val seatNo = parent?.getItemAtPosition(position).toString()
 
                 var bus : Int = 300
@@ -213,6 +213,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         val datePickerDialog = DatePickerDialog(
             requireContext(), { view, year, monthOfYear, dayOfMonth ->
+                val monthOfYear = monthOfYear + 1
                 date = "$dayOfMonth/$monthOfYear/$year"
                 tvCalendar.text = date
             },
@@ -237,3 +238,5 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
 }
+
+

@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.sunny.sahayatribookingsewa.model.User
 import com.sunny.sahayatribookingsewa.repository.UserRepository
+import com.sunny.sahayatribookingsewa.util.SavedData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,9 +47,6 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 val user =
                     User(username = username, phone = phone, password = password)
-
-                saveSharedPref()
-
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         val repository = UserRepository()
@@ -77,18 +75,8 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
             }
+
         }
     }
 
-    private fun saveSharedPref() {
-        val phone = etPhone.text.toString()
-        val password = etPassword.text.toString()
-        val sharedPref = getSharedPreferences("LoginPreference",
-            MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.putString("phone", phone)
-        editor.putString("password", password)
-
-        editor.apply()
-    }
 }

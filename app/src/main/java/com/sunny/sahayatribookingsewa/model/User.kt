@@ -1,7 +1,7 @@
 package com.sunny.sahayatribookingsewa.model
 
 data class User(
-    var _id:String? = null,
+    var _id:String? = "",
     var username: String? = null,
     var email:String?=null,
     var address:String?=null,

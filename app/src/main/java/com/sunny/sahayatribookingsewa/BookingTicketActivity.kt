@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
+import java.lang.Exception
 
 class BookingTicketActivity : AppCompatActivity() {
 
@@ -71,7 +72,6 @@ class BookingTicketActivity : AppCompatActivity() {
 
             confirmBooking(ticket)
         }
-
     }
 
     private fun confirmBooking(ticket: BookingTicket) {
@@ -81,7 +81,16 @@ class BookingTicketActivity : AppCompatActivity() {
 
                 val ticketRepo = BookingRepository()
                 val response = ticketRepo.insertBooking(ticket)
-                if (response.success == true) {
+//                withContext(Main) {
+//                    Toast.makeText(
+//                        this@BookingTicketActivity,
+//                        response.message,
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+
+
+                    if (response.success == true) {
                     withContext(Main) {
                         Toast.makeText(
                             this@BookingTicketActivity,
@@ -90,17 +99,16 @@ class BookingTicketActivity : AppCompatActivity() {
                         ).show()
 
 
-                        val intent = Intent(this@BookingTicketActivity, MainDashboard::class.java)
+                        val intent = Intent(this@BookingTicketActivity, ViewTicketActivity::class.java)
                         startActivity(intent)
                     }
                 }
 
-            } catch (ex: IOException) {
+            } catch (ex: Exception) {
                 withContext(Main) {
                     Toast.makeText(applicationContext, ex.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
-
 }

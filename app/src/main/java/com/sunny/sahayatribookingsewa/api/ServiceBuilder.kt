@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 
 object ServiceBuilder {
 
-        private const val BASE_URL = "http://192.168.137.142:90/"
+        private const val BASE_URL = "http://192.168.137.1:90/"
 //    private const val BASE_URL = "http://10.0.2.2:90/"
     var token: String? = null
 

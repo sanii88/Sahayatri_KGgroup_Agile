@@ -6,65 +6,119 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
     android:gravity="center"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logoname2"
+        android:layout_gravity="center"/>
+
+    //ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="10dp"
+    android:src="@drawable/linebg"/>
+
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Phone Number"
+        app:hintAnimationEnabled="true"
+        android:textColorHint="@color/orange2"
+        android:layout_marginTop="10dp"
+        app:startIconDrawable="@drawable/ic_phonenumber"
+        app:endIconMode="clear_text"
+        app:boxBackgroundMode="outline"
+        app:startIconTint="@color/orange2"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPhone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:hint="Phone number"
-            android:textSize="15sp"
-            android:textColor="@color/black"/>
+            android:layout_height="match_parent"
+            android:letterSpacing="0.1"
+            android:textColor="@color/orange2"
+            android:textStyle="bold"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:hint="Password"
+        android:textColorHint="@color/orange2"
+        app:startIconDrawable="@drawable/ic_password"
+        app:startIconTint="@color/orange2"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:endIconMode="password_toggle"
+        app:boxBackgroundMode="outline"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:hint="Password"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:inputType="textPassword"
-            android:textSize="15sp"
-            android:textColor="@color/black"/>
+            android:letterSpacing="0.1"
+            android:textColor="@color/orange2"
+            android:textStyle="bold"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <CheckBox
-        android:layout_margin="10dp"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:id="@+id/chkRememberMe"
         android:text="Remember Username"
+        android:gravity="center"
+        android:textSize="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_button"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:text="Login"
-        android:textColor="#FFFFFF" />
+        app:backgroundTint="@null"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/btnbg"/>
 
     <TextView
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:id="@+id/tvRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Do not have any account?"
+        android:textSize="15dp" />
+
+    <TextView
+        android:textSize="16dp"
+        android:gravity="center"
+        android:id="@+id/tvRegister"
+        android:textColor="@color/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
         android:text="@string/registerUser" />
+
 </LinearLayout>
