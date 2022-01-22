@@ -20,7 +20,6 @@ import java.lang.Exception
 
 class ViewTicketActivity : AppCompatActivity() {
 
-    private lateinit var hiringHistory1: Button
     private lateinit var recyclerViewTicket: RecyclerView
     private var lstTicket = mutableListOf<BookingTicket>().asReversed()
 
@@ -28,13 +27,7 @@ class ViewTicketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_ticket)
 
-        hiringHistory1 = findViewById(R.id.hiringHistory1)
         recyclerViewTicket = findViewById(R.id.recyclerViewTicket)
-
-        hiringHistory1.setOnClickListener {
-            val intent = Intent(this, ViewHiringActivity::class.java)
-            startActivity(intent)
-        }
 
         CoroutineScope(Dispatchers.IO).launch {
             try {

@@ -221,6 +221,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
             month,
             day
         )
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000;
         datePickerDialog.show()
     }
 

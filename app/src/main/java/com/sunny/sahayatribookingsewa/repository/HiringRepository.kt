@@ -15,17 +15,24 @@ class HiringRepository : MyApiRequest(){
 
     private val hiringApi = ServiceBuilder.buildService(HiringAPI::class.java)
 
-    //Insert Assignments
+    //Insert Hiring
     suspend fun insertHiring(hiring: Hiring): AddHiringResponse {
         return apiRequest {
             hiringApi.insertHiring(ServiceBuilder.token!!,hiring)
         }
     }
 
-    //Get Assignments
+    //Get Hiring
     suspend fun getAllHiring(): GetHiringResponse {
         return apiRequest {
             hiringApi.getAllHiring(ServiceBuilder.token!!)
+        }
+    }
+
+    //Delete Hiring
+    suspend fun deleteHiring(id: String): AddHiringResponse {
+        return apiRequest {
+            hiringApi.deleteHiring(ServiceBuilder.token!!,id)
         }
     }
 

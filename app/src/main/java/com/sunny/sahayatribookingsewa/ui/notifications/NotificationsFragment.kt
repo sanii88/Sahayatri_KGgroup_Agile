@@ -23,7 +23,8 @@ class NotificationsFragment : Fragment() {
     private lateinit var tvName : TextView
     private lateinit var tvContact : TextView
     private lateinit var btnEditProfile : Button
-    private lateinit var btnHistory : Button
+    private lateinit var btnTicket : Button
+    private lateinit var btnHire : Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +40,8 @@ class NotificationsFragment : Fragment() {
         tvName = root.findViewById(R.id.tvName)
         tvContact = root.findViewById(R.id.tvContact)
         btnEditProfile = root.findViewById(R.id.btnEditProfile)
-        btnHistory = root.findViewById(R.id.btnHistory)
+        btnTicket = root.findViewById(R.id.btnTicket)
+        btnHire = root.findViewById(R.id.btnHire)
 
 
         btnEditProfile.setOnClickListener {
@@ -47,8 +49,13 @@ class NotificationsFragment : Fragment() {
             startActivity(intent)
         }
 
-        btnHistory.setOnClickListener {
+        btnTicket.setOnClickListener {
             val intent = Intent(view?.context, ViewTicketActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnHire.setOnClickListener {
+            val intent = Intent(view?.context, ViewHiringActivity::class.java)
             startActivity(intent)
         }
 

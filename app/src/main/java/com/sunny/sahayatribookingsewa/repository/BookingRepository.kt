@@ -10,17 +10,25 @@ import com.sunny.sahayatribookingsewa.response.GetBookingResponse
 class BookingRepository : MyApiRequest() {
     private val bookingApi = ServiceBuilder.buildService(BookingAPI::class.java)
 
-    //Insert Assignments
+    //Insert Bookings
     suspend fun insertBooking(bookingTicket: BookingTicket): AddBookingResponse {
         return apiRequest {
             bookingApi.insertBooking(ServiceBuilder.token!!,bookingTicket)
         }
     }
 
-    //Get Assignments
+    //Get Bookings
     suspend fun getAllBookings(): GetBookingResponse {
         return apiRequest {
             bookingApi.getAllBookings(ServiceBuilder.token!!)
         }
     }
+
+    //Delete Bookings
+    suspend fun deleteBooking(id: String): AddBookingResponse {
+        return apiRequest {
+            bookingApi.deleteBooking(ServiceBuilder.token!!,id)
+        }
+    }
+
 }

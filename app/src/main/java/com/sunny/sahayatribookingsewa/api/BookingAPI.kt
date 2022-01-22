@@ -18,5 +18,11 @@ interface BookingAPI {
         @Header("Authorization") token: String,
         @Body bookingTicket: BookingTicket
     ): Response<AddBookingResponse>
+
+    @DELETE("bookingTicket/delete/{id}")
+    suspend fun deleteBooking(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Response<AddBookingResponse>
     
 }

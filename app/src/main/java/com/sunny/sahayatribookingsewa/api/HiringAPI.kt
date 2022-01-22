@@ -7,10 +7,7 @@ import com.sunny.sahayatribookingsewa.response.AddHiringResponse
 import com.sunny.sahayatribookingsewa.response.GetBookingResponse
 import com.sunny.sahayatribookingsewa.response.GetHiringResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface HiringAPI {
 
@@ -23,6 +20,12 @@ interface HiringAPI {
     suspend fun insertHiring(
         @Header("Authorization") token: String,
         @Body hiring: Hiring
+    ): Response<AddHiringResponse>
+
+    @DELETE("hiring/delete/{id}")
+    suspend fun deleteHiring(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
     ): Response<AddHiringResponse>
 
 }
