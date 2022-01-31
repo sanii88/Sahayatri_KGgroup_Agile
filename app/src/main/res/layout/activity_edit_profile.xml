@@ -39,6 +39,14 @@
         android:layout_margin="20dp"
         android:textAlignment="center"/>
 
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:layout_margin="20dp"
+        android:textAlignment="center"/>
+
     <Button
         android:id="@+id/btnUpdateProfile"
         android:layout_width="match_parent"

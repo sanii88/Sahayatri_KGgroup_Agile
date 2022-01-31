@@ -3,6 +3,7 @@ package com.sunny.sahayatribookingsewa
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.sunny.sahayatribookingsewa.util.SavedData
@@ -36,6 +37,17 @@ class BoardingActivity : AppCompatActivity() {
 
 
         btnBoarding.setOnClickListener {
+
+            if (TextUtils.isEmpty(etName.text)) {
+                etName.error = "Fullname must not be empty!!"
+                etName.requestFocus()
+                return@setOnClickListener
+            } else if (TextUtils.isEmpty(etContact.text)) {
+                etContact.error = "Contact number must not be empty!!"
+                etContact.requestFocus()
+                return@setOnClickListener
+            }
+
             saveBoarding()
         }
 

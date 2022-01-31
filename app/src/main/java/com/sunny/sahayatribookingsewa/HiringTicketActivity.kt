@@ -75,7 +75,7 @@ class HiringTicketActivity : AppCompatActivity() {
                         ).show()
 
 
-                        val intent = Intent(this@HiringTicketActivity, ViewHiringActivity::class.java)
+                        val intent = Intent(this@HiringTicketActivity, MainDashboard::class.java)
                         startActivity(intent)
                     }
                 }

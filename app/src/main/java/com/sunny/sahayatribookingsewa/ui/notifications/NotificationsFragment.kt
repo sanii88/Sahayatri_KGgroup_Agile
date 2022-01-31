@@ -7,12 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sunny.sahayatribookingsewa.*
 import com.sunny.sahayatribookingsewa.databinding.FragmentNotificationsBinding
+import com.sunny.sahayatribookingsewa.repository.UserRepository
 import com.sunny.sahayatribookingsewa.util.SavedData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class NotificationsFragment : Fragment() {
 
@@ -43,6 +50,26 @@ class NotificationsFragment : Fragment() {
         btnTicket = root.findViewById(R.id.btnTicket)
         btnHire = root.findViewById(R.id.btnHire)
 
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userRepo = UserRepository()
+                val response = userRepo.getMe()
+
+                if (response.success == true) {
+                    tvName.text = response.user!!.username
+                    tvContact.text = response.user.phone
+                } else {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (ex: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
         btnEditProfile.setOnClickListener {
             val intent = Intent(view?.context, EditProfileActivity::class.java)

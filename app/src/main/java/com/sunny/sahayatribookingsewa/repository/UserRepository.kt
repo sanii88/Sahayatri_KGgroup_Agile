@@ -4,6 +4,9 @@ import com.sunny.sahayatribookingsewa.api.MyApiRequest
 import com.sunny.sahayatribookingsewa.api.ServiceBuilder
 import com.sunny.sahayatribookingsewa.api.UserAPI
 import com.sunny.sahayatribookingsewa.model.User
+import com.sunny.sahayatribookingsewa.response.AddBookingResponse
+import com.sunny.sahayatribookingsewa.response.GetBookingResponse
+import com.sunny.sahayatribookingsewa.response.GetUserResponse
 import com.sunny.sahayatribookingsewa.response.UserResponse
 
 class UserRepository : MyApiRequest(){
@@ -22,6 +25,37 @@ class UserRepository : MyApiRequest(){
     suspend fun loginUser(phone: String, password: String): UserResponse {
         return apiRequest {
             userApi.loginUser(phone, password)
+        }
+    }
+
+    //Get Users
+    suspend fun getAllUsers(): GetUserResponse {
+        return apiRequest {
+            userApi.getAllUsers(ServiceBuilder.token!!)
+        }
+    }
+
+    //Delete Users
+    suspend fun deleteUsers(id: String): AddBookingResponse {
+        return apiRequest {
+            userApi.deleteUsers(ServiceBuilder.token!!,id)
+        }
+    }
+
+    //Update Users
+    suspend fun updateUser(id: String, user: User): AddBookingResponse {
+        return apiRequest {
+            userApi.updateUser(
+                ServiceBuilder.token!!, id, user
+            )
+
+        }
+    }
+
+    //Get my info
+    suspend fun getMe(): UserResponse {
+        return apiRequest {
+            userApi.getMe(ServiceBuilder.token!!)
         }
     }
 }

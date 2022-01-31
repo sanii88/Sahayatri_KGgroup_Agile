@@ -3,6 +3,7 @@ package com.sunny.sahayatribookingsewa.ui.home
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    val price: Int = 300
     private lateinit var btnBooking: Button
     private lateinit var btnHire: Button
     private lateinit var tvCalendar: TextView

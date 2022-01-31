@@ -3,6 +3,7 @@ package com.sunny.sahayatribookingsewa
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -34,6 +35,22 @@ class RegisterActivity : AppCompatActivity() {
         btnAddUser = findViewById(R.id.btnAddUser)
 
         btnAddUser.setOnClickListener {
+
+
+            //validation
+            if (TextUtils.isEmpty(etUsername.text)) {
+                etUsername.error = "Phone number must not be empty!!"
+                etUsername.requestFocus()
+                return@setOnClickListener
+            } else if (TextUtils.isEmpty(etPhone.text)) {
+                etPhone.error = "Phone number must not be empty!!"
+                etPhone.requestFocus()
+                return@setOnClickListener
+            } else if (TextUtils.isEmpty(etPassword.text)) {
+                etPassword.error = "Password must not be empty!!"
+                etPassword.requestFocus()
+                return@setOnClickListener
+            }
 
             val username = etUsername.text.toString()
             val phone = etPhone.text.toString()

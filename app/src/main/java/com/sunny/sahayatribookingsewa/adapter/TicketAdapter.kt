@@ -50,7 +50,7 @@ class TicketAdapter(
         holder.btnDelete.setOnClickListener{
 
             val builder = AlertDialog.Builder(context)
-            builder.setTitle("Delete assignment")
+            builder.setTitle("Delete booking")
             builder.setMessage("Are you sure you want to delete this ??")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
             builder.setPositiveButton("Yes") { _, _ ->

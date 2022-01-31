@@ -5,15 +5,6 @@ import android.os.Parcelable
 import androidx.room.PrimaryKey
 
 data class BookingTicket(
-//{
-//    "route":"Kathmandu-Pokhara",
-//    "vehicle_type":"Bus",
-//    "departure_date":"2022-1-2",
-//    "seatNo":"1",
-//    "boarding_person":"sunny",
-//    "boarding_point":"Buspark",
-//    "contact":"1234"
-//}
     var _id: String? = null,
     var route: String? = null,
     var vehicle_type: String? = null,

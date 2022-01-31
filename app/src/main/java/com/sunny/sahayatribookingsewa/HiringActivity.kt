@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.sunny.sahayatribookingsewa.ui.home.HomeFragment
@@ -14,9 +15,6 @@ class HiringActivity : AppCompatActivity() {
 
     private lateinit var btnHiring: Button
     private lateinit var btnBooking1: Button
-    private lateinit var tvVhType: TextView
-    private lateinit var tvDays: TextView
-    private lateinit var tvDate: TextView
     private lateinit var tvCalendar: TextView
     private lateinit var spVhType: Spinner
     private lateinit var etHireDays: EditText
@@ -36,9 +34,6 @@ class HiringActivity : AppCompatActivity() {
 
         btnHiring = findViewById(R.id.btnHiring)
         btnBooking1 = findViewById(R.id.btnBooking1)
-        tvVhType = findViewById(R.id.tvVhType)
-        tvDays = findViewById(R.id.tvDays)
-        tvDate = findViewById(R.id.tvDate)
         tvCalendar = findViewById(R.id.tvCalendar)
         spVhType = findViewById(R.id.spVhType)
         etHireDays = findViewById(R.id.etHireDays)
@@ -50,6 +45,17 @@ class HiringActivity : AppCompatActivity() {
         }
 
         btnHiring.setOnClickListener {
+
+            if (TextUtils.isEmpty(etHireDays.text)) {
+                etHireDays.error = "Hire days must not be empty!!"
+                etHireDays.requestFocus()
+                return@setOnClickListener
+            } else if (TextUtils.isEmpty(etContactInfo.text)) {
+                etContactInfo.error = "Contact must not be empty!!"
+                etContactInfo.requestFocus()
+                return@setOnClickListener
+            }
+
             saveHiring()
         }
 

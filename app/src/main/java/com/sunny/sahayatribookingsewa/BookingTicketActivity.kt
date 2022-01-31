@@ -99,7 +99,7 @@ class BookingTicketActivity : AppCompatActivity() {
                         ).show()
 
 
-                        val intent = Intent(this@BookingTicketActivity, ViewTicketActivity::class.java)
+                        val intent = Intent(this@BookingTicketActivity, MainDashboard::class.java)
                         startActivity(intent)
                     }
                 }
