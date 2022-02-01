@@ -28,6 +28,8 @@ class HiringTicketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hiring_ticket)
+        supportActionBar?.hide()
+
 
         tvHireVehicleType = findViewById(R.id.tvHireVehicleType)
         tvHireDays = findViewById(R.id.tvHireDays)

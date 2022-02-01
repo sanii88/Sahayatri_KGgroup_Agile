@@ -15,6 +15,11 @@ interface BookingAPI {
         @Header("Authorization") token: String
     ): Response<GetBookingResponse>
 
+    @GET("bookings")
+    suspend fun getMyBookings(
+        @Header("Authorization") token: String
+    ): Response<GetBookingResponse>
+
     @POST("bookingTicket/insert")
     suspend fun insertBooking(
         @Header("Authorization") token: String,

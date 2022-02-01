@@ -21,6 +21,8 @@ class ViewTicket : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_ticket2)
+        supportActionBar?.hide()
+
 
         recyclerViewTicket = findViewById(R.id.recyclerViewTicket)
 

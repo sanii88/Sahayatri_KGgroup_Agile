@@ -1,60 +1,442 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/lightmain"
     tools:context=".ui.notifications.NotificationsFragment">
 
-    <ImageView
-        android:id="@+id/tvImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="#d3d3d3"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"/>
+    <RelativeLayout
+        android:id="@+id/llprofile"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="horizontal"
+        android:background="@drawable/pg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-<TextView
-    android:id="@+id/tvName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="25dp"
-    android:layout_margin="8dp"
-    android:text="Name"
-    android:gravity="center"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvprofile"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            app:cardElevation="@null"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tvImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_gravity="top"
+                    android:background="#d3d3d3" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearprofiletextbtn"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_below="@+id/tvImage"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:paddingLeft="15dp"
+                        android:text="Suman Basnet"
+                        android:textColor="@color/purple_500"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lineareditprofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvImage"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/linearprofiletextbtn"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    //Button
+                    android:id="@+id/editprofilebtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/editprofilebtn"
+                    app:backgroundTint="@null" />
+
+                    <Button
+                        android:id="@+id/btnEditProfile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/editprofilebtn"
+                        app:backgroundTint="@null" />
+
+
+                    <Button
+                        android:id="@+id/btnLogout"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/logoutbtn"
+                        app:backgroundTint="@null" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llnumber"
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/linearprofiletextbtn"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/red"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/phone" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvphoneno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+
+                            android:fontFamily="@font/agency_fbb"
+                            android:letterSpacing="0.1"
+                            android:text="Phone"
+                            android:textColor="@color/red"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:textColor="@color/red" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llhome"
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/llnumber"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/blue"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/home" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvhomelocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/agency_fbb"
+                            android:letterSpacing="0.1"
+                            android:text="Address"
+                            android:textColor="@color/blue"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textColor="@color/blue" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llemail"
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/lineareditprofile"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/purple"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/email" />
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvemailtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/agency_fbb"
+                            android:letterSpacing="0.1"
+                            android:text="Email"
+                            android:textColor="@color/purple"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textColor="@color/purple" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/llemail"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/llhome"
+                    android:gravity="center"
+                    android:background="@drawable/green"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/user" />
+
+                    <TextView
+                        android:id="@+id/tvmore"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/agency_fbb"
+                        android:letterSpacing="0.1"
+                        android:text="More"
+                        android:textColor="@color/green"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv2"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/llprofile"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:id="@+id/llll"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvactiveticket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/agency_fbb"
+                    android:text="Active Ticket"
+                    android:textColor="@color/purple_500"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Your have booked ticket for- Date" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnActiveTicket"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toRightOf="@id/llll"
+                android:background="@drawable/btnactiveticket"
+                app:backgroundTint="@null" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
-        android:id="@+id/tvContact"
-        android:layout_width="match_parent"
+        android:id="@+id/tv7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="Contact number"
-        android:layout_margin="8dp"
-        android:gravity="center"/>
+        android:text="History"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/cv2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"/>
 
-    <Button
-        android:id="@+id/btnEditProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="Edit Profile"/>
 
-<Button
-    android:id="@+id/btnTicket"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="ticket history"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv7"
+        app:layout_constraintLeft_toLeftOf="parent">
 
-    <Button
-        android:id="@+id/btnHire"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hiring history"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/btnActiveTicket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="active ticket"/>
-</LinearLayout>
+            <Button
+                android:id="@+id/btnTicket"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:backgroundTint="@null"
+                android:layout_gravity="center"
+                android:background="@drawable/btntickethistory"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Ticket"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv7"
+        app:layout_constraintLeft_toRightOf="@id/cv3">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnHire"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:backgroundTint="@null"
+                android:layout_gravity="center"
+                android:background="@drawable/vehiclebg"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Hire"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,8 @@ class HiringActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hiring)
+        supportActionBar?.hide()
+
 
         btnHiring = findViewById(R.id.btnHiring)
         btnBooking1 = findViewById(R.id.btnBooking1)

@@ -32,6 +32,8 @@ class BookingTicketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ticket)
+        supportActionBar?.hide()
+
 
         tvTicketRoute = findViewById(R.id.tvTicketRoute)
         tvTicketDate = findViewById(R.id.tvTicketDate)

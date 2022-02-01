@@ -15,6 +15,8 @@ class AdminDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_dashboard)
+        supportActionBar?.hide()
+
 
         btnTicket = findViewById(R.id.btnTicket)
         btnBook = findViewById(R.id.btnBook)

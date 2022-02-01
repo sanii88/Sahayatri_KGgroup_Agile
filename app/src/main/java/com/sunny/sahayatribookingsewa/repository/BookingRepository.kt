@@ -27,6 +27,13 @@ class BookingRepository : MyApiRequest() {
         }
     }
 
+    //Get My Bookings
+    suspend fun getMyBookings(): GetBookingResponse {
+        return apiRequest {
+            bookingApi.getMyBookings(ServiceBuilder.token!!)
+        }
+    }
+
     //Delete Bookings
     suspend fun deleteBooking(id: String): AddBookingResponse {
         return apiRequest {

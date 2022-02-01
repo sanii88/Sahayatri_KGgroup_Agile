@@ -20,6 +20,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var etUsername: EditText
     private lateinit var etPhone: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etAddress: EditText
     private lateinit var etPassword: EditText
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAddUser: Button
@@ -27,9 +29,13 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        supportActionBar?.hide()
+
 
         etUsername = findViewById(R.id.etUsername)
         etPhone = findViewById(R.id.etPhone)
+        etEmail = findViewById(R.id.etEmail)
+        etAddress = findViewById(R.id.etAddress)
         etPassword = findViewById(R.id.etPassword)
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
         btnAddUser = findViewById(R.id.btnAddUser)
@@ -46,7 +52,15 @@ class RegisterActivity : AppCompatActivity() {
                 etPhone.error = "Phone number must not be empty!!"
                 etPhone.requestFocus()
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(etPassword.text)) {
+            } else if (TextUtils.isEmpty(etEmail.text)) {
+                etEmail.error = "Email must not be empty!!"
+                etEmail.requestFocus()
+                return@setOnClickListener
+            }else if (TextUtils.isEmpty(etAddress.text)) {
+                etAddress.error = "Address must not be empty!!"
+                etAddress.requestFocus()
+                return@setOnClickListener
+            }else if (TextUtils.isEmpty(etPassword.text)) {
                 etPassword.error = "Password must not be empty!!"
                 etPassword.requestFocus()
                 return@setOnClickListener
@@ -54,6 +68,8 @@ class RegisterActivity : AppCompatActivity() {
 
             val username = etUsername.text.toString()
             val phone = etPhone.text.toString()
+            val email = etEmail.text.toString()
+            val address = etAddress.text.toString()
             val password = etPassword.text.toString()
             val confirmPassword = etConfirmPassword.text.toString()
 
@@ -63,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 val user =
-                    User(username = username, phone = phone, password = password)
+                    User(username = username, phone = phone, email = email , address = address , password = password)
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         val repository = UserRepository()

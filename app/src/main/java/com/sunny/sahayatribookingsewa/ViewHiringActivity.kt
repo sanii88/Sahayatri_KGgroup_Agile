@@ -23,6 +23,8 @@ class ViewHiringActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_hiring)
+        supportActionBar?.hide()
+
 
         recyclerViewHiring = findViewById(R.id.recyclerViewHiring)
 

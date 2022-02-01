@@ -26,6 +26,8 @@ class ViewTicketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_ticket)
+        supportActionBar?.hide()
+
 
         recyclerViewTicket = findViewById(R.id.recyclerViewTicket)
 
@@ -33,7 +35,7 @@ class ViewTicketActivity : AppCompatActivity() {
             try {
 
                 val ticketRepo = BookingRepository()
-                val response = ticketRepo.getAllBookings()
+                val response = ticketRepo.getMyBookings()
                 if (response.success == true) {
                     lstTicket = response.data!!
                     withContext(Dispatchers.Main) {

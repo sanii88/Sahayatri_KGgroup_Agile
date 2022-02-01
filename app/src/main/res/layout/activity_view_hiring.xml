@@ -8,17 +8,22 @@
     tools:context=".ViewHiringActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="List of vehicle hirings "
-        android:textSize="25dp" />
+        android:gravity="center"
+        android:background="@color/lightmain"
+        android:text="My Hiring History"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:fontFamily="@font/agency_fbb"
+        android:textColor="@color/main" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHiring"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

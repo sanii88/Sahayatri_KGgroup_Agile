@@ -26,6 +26,8 @@ class BoardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_boarding)
+        supportActionBar?.hide()
+
 
         spBoarding = findViewById(R.id.spBoarding)
         etName = findViewById(R.id.etName)
