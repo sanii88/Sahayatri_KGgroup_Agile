@@ -13,9 +13,12 @@ data class BookingTicket(
     var boarding_person: String? = null,
     var boarding_point: String? = null,
     var contact: String? = null,
-    var price: String? = null
-) : Parcelable{
+    var price: String? = null,
+    var createdAt: String? = null
+
+) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -38,6 +41,7 @@ data class BookingTicket(
         parcel.writeString(boarding_point)
         parcel.writeString(contact)
         parcel.writeString(price)
+        parcel.writeString(createdAt.toString())
     }
 
     override fun describeContents(): Int {
@@ -53,5 +57,4 @@ data class BookingTicket(
             return arrayOfNulls(size)
         }
     }
-
 }

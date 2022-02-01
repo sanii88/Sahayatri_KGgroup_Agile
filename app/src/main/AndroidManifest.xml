@@ -19,6 +19,9 @@
         android:theme="@style/Theme.SahayatriBookingSewa"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ActiveTicketActivity"
+            android:exported="true" />
+        <activity
             android:name=".ShowUser"
             android:exported="true" />
         <activity

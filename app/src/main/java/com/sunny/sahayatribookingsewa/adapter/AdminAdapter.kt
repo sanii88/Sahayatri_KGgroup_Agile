@@ -13,6 +13,7 @@ import com.sunny.sahayatribookingsewa.R
 import com.sunny.sahayatribookingsewa.model.AdminTicket
 import com.sunny.sahayatribookingsewa.model.BookingTicket
 import com.sunny.sahayatribookingsewa.repository.BookingRepository
+import com.sunny.sahayatribookingsewa.repository.HiringRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,6 +34,7 @@ class AdminAdapter(
         val tvBoardingPoint: TextView = view.findViewById(R.id.tvBoardingPoint)
         val tvRoute: TextView = view.findViewById(R.id.tvRoute)
         val tvPrice: TextView = view.findViewById(R.id.tvPrice)
+        val btnBook: TextView = view.findViewById(R.id.btnBook)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminViewHolder {
@@ -49,6 +51,44 @@ class AdminAdapter(
         holder.tvBoardingPoint.text = tickets.boarding_point
         holder.tvRoute.text = tickets.route
         holder.tvPrice.text = tickets.price
+
+        holder.btnBook.setOnClickListener{
+
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Book ticket")
+            builder.setMessage("Do you want to book this ticket??")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+            builder.setPositiveButton("Yes") { _, _ ->
+                CoroutineScope(Dispatchers.IO).launch{
+                    try{
+                        val ticketRepo = BookingRepository()
+                        val response = ticketRepo.insertTickets(tickets)
+                        if (response.success == true) {
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(
+                                    context,
+                                    "Booking successful",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                        }
+
+                    }catch(ex: Exception){
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+            builder.setNegativeButton("No") { _, _ ->
+                Toast.makeText(context, "Action cancelled", Toast.LENGTH_SHORT).show()
+            }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+
+        }
 
     }
 

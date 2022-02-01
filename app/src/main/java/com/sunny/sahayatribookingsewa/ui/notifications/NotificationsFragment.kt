@@ -32,6 +32,7 @@ class NotificationsFragment : Fragment() {
     private lateinit var btnEditProfile : Button
     private lateinit var btnTicket : Button
     private lateinit var btnHire : Button
+    private lateinit var btnActiveTicket : Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +50,7 @@ class NotificationsFragment : Fragment() {
         btnEditProfile = root.findViewById(R.id.btnEditProfile)
         btnTicket = root.findViewById(R.id.btnTicket)
         btnHire = root.findViewById(R.id.btnHire)
+        btnActiveTicket = root.findViewById(R.id.btnActiveTicket)
 
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -83,6 +85,11 @@ class NotificationsFragment : Fragment() {
 
         btnHire.setOnClickListener {
             val intent = Intent(view?.context, ViewHiringActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnActiveTicket.setOnClickListener {
+            val intent = Intent(view?.context, ActiveTicketActivity::class.java)
             startActivity(intent)
         }
 

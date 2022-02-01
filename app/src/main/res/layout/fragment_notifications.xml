@@ -52,4 +52,9 @@
         android:layout_height="wrap_content"
         android:text="hiring history"/>
 
+    <Button
+        android:id="@+id/btnActiveTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="active ticket"/>
 </LinearLayout>
