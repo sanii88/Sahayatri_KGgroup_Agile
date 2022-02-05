@@ -58,7 +58,6 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:paddingLeft="15dp"
-                        android:text="Suman Basnet"
                         android:textColor="@color/purple_500"
                         android:textSize="30dp"
                         android:textStyle="bold" />

@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class User(
-    var _id:String? = "",
+    var _id:String? = null,
     var username: String? = null,
     var email:String?=null,
     var address:String?="",

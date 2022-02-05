@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var chkRememberMe: CheckBox
     private lateinit var linearLayout: LinearLayout
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -107,19 +108,28 @@ class LoginActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val repository = UserRepository()
-                val response = repository.loginUser(phone , password)
+                val response = repository.loginUser(phone, password)
                 if (response.success == true) {
                     // Save token
                     ServiceBuilder.token = "Bearer ${response.token}"
-                    //Save username and password in shared preferences
-                    // saveUsernamePassword()
-                    startActivity(
-                        Intent(
-                            this@LoginActivity,
-                            MainDashboard::class.java
+                    if (response.userType == "Customer") {
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                MainDashboard::class.java
+                            )
                         )
-                    )
-                    finish()
+                        finish()
+                    }
+                    else{
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                AdminDashboard::class.java
+                            )
+                        )
+                        finish()
+                    }
                 } else {
                     withContext(Dispatchers.Main) {
                         val snack =

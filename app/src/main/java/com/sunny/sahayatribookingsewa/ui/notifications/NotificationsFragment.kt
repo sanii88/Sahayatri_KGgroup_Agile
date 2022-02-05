@@ -96,8 +96,8 @@ class NotificationsFragment : Fragment() {
 
 
                 if (response.success == true) {
-                    tvName.text = response.user!!.username
-                    tvContact.text = response.user.phone
+                    tvName.text = response.data!!.username
+                    tvContact.text = response.data.phone
 //                    tvEmail.text = response.user.email
 //                    tvAddress.text = response.user.address
                 } else {
