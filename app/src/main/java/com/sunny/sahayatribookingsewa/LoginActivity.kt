@@ -2,6 +2,7 @@ package com.sunny.sahayatribookingsewa
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,6 +10,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.sunny.sahayatribookingsewa.api.ServiceBuilder
@@ -63,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             login()
+            saveSharedPref()
         }
 
         //check permission
@@ -70,6 +74,22 @@ class LoginActivity : AppCompatActivity() {
             permissionAsk()
         }
 
+    }
+
+    private fun saveSharedPref() {
+        val phone = etPhone.text.toString()
+        val password = etPassword.text.toString()
+
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("username", phone)
+        editor.putString("password", password)
+        editor.apply()
+        Toast.makeText(
+            this@LoginActivity,
+            "Username and password saved",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
 
@@ -113,6 +133,7 @@ class LoginActivity : AppCompatActivity() {
                     // Save token
                     ServiceBuilder.token = "Bearer ${response.token}"
                     if (response.userType == "Customer") {
+                        HighPriorityNotification()
                         startActivity(
                             Intent(
                                 this@LoginActivity,
@@ -120,8 +141,7 @@ class LoginActivity : AppCompatActivity() {
                             )
                         )
                         finish()
-                    }
-                    else{
+                    } else {
                         startActivity(
                             Intent(
                                 this@LoginActivity,
@@ -157,4 +177,21 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun HighPriorityNotification() {
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.CHANNEL_1)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Sahayatri notifies you")
+            .setContentText("Hello, Welcome to Sahayatri Sewa!!")
+            .setColor(Color.BLACK)
+            .build()
+
+        notificationManager.notify(1, notification)
+    }
+
 }

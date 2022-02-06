@@ -2,13 +2,17 @@ package com.sunny.sahayatribookingsewa.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.sunny.sahayatribookingsewa.NotificationChannels
 import com.sunny.sahayatribookingsewa.R
 import com.sunny.sahayatribookingsewa.model.AdminTicket
 import com.sunny.sahayatribookingsewa.model.BookingTicket
@@ -52,15 +56,15 @@ class AdminAdapter(
         holder.tvRoute.text = tickets.route
         holder.tvPrice.text = tickets.price
 
-        holder.btnBook.setOnClickListener{
+        holder.btnBook.setOnClickListener {
 
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Book ticket")
             builder.setMessage("Do you want to book this ticket??")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
             builder.setPositiveButton("Yes") { _, _ ->
-                CoroutineScope(Dispatchers.IO).launch{
-                    try{
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
                         val ticketRepo = BookingRepository()
                         val response = ticketRepo.insertTickets(tickets)
                         if (response.success == true) {
@@ -74,7 +78,7 @@ class AdminAdapter(
                             }
                         }
 
-                    }catch(ex: Exception){
+                    } catch (ex: Exception) {
                         withContext(Dispatchers.Main) {
                             Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show()
                         }

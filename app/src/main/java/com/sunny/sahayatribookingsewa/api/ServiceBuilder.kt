@@ -10,7 +10,6 @@ object ServiceBuilder {
         private const val BASE_URL = "http://192.168.137.1:90/"
 //    private const val BASE_URL = "http://10.0.2.2:90/"
     var token: String? = null
-    var UserID: String? = null
 
     var okHttpClient = OkHttpClient.Builder()
         .connectTimeout(1, TimeUnit.MINUTES)

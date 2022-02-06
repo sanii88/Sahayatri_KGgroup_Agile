@@ -1,11 +1,14 @@
 package com.sunny.sahayatribookingsewa
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.sunny.sahayatribookingsewa.model.BookingTicket
 import com.sunny.sahayatribookingsewa.model.Hiring
 import com.sunny.sahayatribookingsewa.repository.BookingRepository
@@ -76,7 +79,7 @@ class HiringTicketActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-
+                        HighPriorityNotification()
                         val intent = Intent(this@HiringTicketActivity, MainDashboard::class.java)
                         startActivity(intent)
                     }
@@ -88,5 +91,21 @@ class HiringTicketActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun HighPriorityNotification(){
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this,notificationChannels.CHANNEL_1)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Sahayatri Sewa")
+            .setContentText("You have hired a ${tvHireVehicleType.text} for ${tvHireDate.text} !!")
+            .setColor(Color.BLACK)
+            .build()
+
+        notificationManager.notify(1,notification)
     }
 }

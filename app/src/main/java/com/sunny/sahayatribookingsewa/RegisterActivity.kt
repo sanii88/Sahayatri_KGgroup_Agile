@@ -15,6 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -73,10 +75,15 @@ class RegisterActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
             val confirmPassword = etConfirmPassword.text.toString()
 
+//            Toast.makeText(this, isValidPassword(password).toString(), Toast.LENGTH_SHORT).show()
             if (password != confirmPassword) {
                 etPassword.error = "Password does not match"
                 etPassword.requestFocus()
                 return@setOnClickListener
+//            } else if (!isValidPassword(password)) {
+//                etPassword.error = "Password must contain min 8 characters!!"
+//                etPassword.requestFocus()
+//                return@setOnClickListener
             } else {
                 val user =
                     User(username = username, phone = phone, email = email , address = address , password = password)
@@ -111,5 +118,14 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
+
+//    private fun isValidPassword(password: String): Boolean {
+//        val pattern: Pattern
+//        val passwordPattern = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"
+//        pattern = Pattern.compile(passwordPattern)
+//        val matcher: Matcher = pattern.matcher(password)
+//        return matcher.matches()
+//    }
+
 
 }

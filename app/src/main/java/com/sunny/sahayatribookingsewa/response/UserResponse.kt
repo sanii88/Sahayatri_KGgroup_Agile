@@ -6,7 +6,7 @@ data class UserResponse(
     val success: Boolean? = null,
     val token: String? = null,
     val message: String? = null,
-    val data: User? = null,
+    val user: User? = null,
     val userType: String? = null
 
 )

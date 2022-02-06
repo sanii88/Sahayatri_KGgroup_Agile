@@ -1,11 +1,14 @@
 package com.sunny.sahayatribookingsewa
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.sunny.sahayatribookingsewa.model.BookingTicket
 import com.sunny.sahayatribookingsewa.repository.BookingRepository
 import com.sunny.sahayatribookingsewa.ui.home.HomeFragment
@@ -100,7 +103,7 @@ class BookingTicketActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-
+                        HighPriorityNotification()
                         val intent = Intent(this@BookingTicketActivity, MainDashboard::class.java)
                         startActivity(intent)
                     }
@@ -112,5 +115,21 @@ class BookingTicketActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun HighPriorityNotification(){
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this,notificationChannels.CHANNEL_1)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Sahayatri Sewa")
+            .setContentText("You have booked ticket for ${tvTicketRoute.text} on ${tvTicketDate.text} !!")
+            .setColor(Color.BLACK)
+            .build()
+
+        notificationManager.notify(1,notification)
     }
 }

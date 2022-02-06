@@ -40,7 +40,7 @@ class EditProfileActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etAddress = findViewById(R.id.etAddress)
         btnUpdateProfile = findViewById(R.id.btnUpdateProfile)
-        
+
         getUserData()
 
         btnUpdateProfile.setOnClickListener {
@@ -53,6 +53,7 @@ class EditProfileActivity : AppCompatActivity() {
         val phone = etContact.text.toString()
         val email = etEmail.text.toString()
         val address = etAddress.text.toString()
+        val id : String? = null
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -60,11 +61,20 @@ class EditProfileActivity : AppCompatActivity() {
                     username = username, phone = phone, email = email, address = address
                 )
                 val userRepo = UserRepository()
-                val response = userRepo.updateUser( ServiceBuilder.UserID!! , user)
-                if(response.success == true){
-                    startActivity(Intent(this@EditProfileActivity,NotificationsFragment::class.java))
-                    finish()
-                    Toast.makeText(this@EditProfileActivity, "User updated!!", Toast.LENGTH_SHORT).show()
+                val response = userRepo.updateUser(id!! , user)
+                if (response.success == true) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@EditProfileActivity,
+                            "Profile Updated!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        val intent =
+                            Intent(this@EditProfileActivity, NotificationsFragment::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
 
             } catch (ex: Exception) {
@@ -84,7 +94,7 @@ class EditProfileActivity : AppCompatActivity() {
                 val userRepo = UserRepository()
                 val response = userRepo.getMe()
                 if (response.success == true) {
-                    val user = response.data!!
+                    val user = response.user!!
                     withContext(Dispatchers.Main) {
                         etName.setText("${user.username}")
                         etContact.setText("${user.phone}")

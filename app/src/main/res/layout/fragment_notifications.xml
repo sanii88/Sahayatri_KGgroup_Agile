@@ -127,18 +127,7 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvphoneno"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
 
-                            android:fontFamily="@font/agency_fbb"
-                            android:letterSpacing="0.1"
-                            android:text="Phone"
-                            android:textColor="@color/red"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvContact"
@@ -179,19 +168,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvhomelocation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/agency_fbb"
-                            android:letterSpacing="0.1"
-                            android:text="Address"
-                            android:textColor="@color/blue"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-
-                        <TextView
                             android:id="@+id/tvAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -229,17 +205,6 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvemailtext"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/agency_fbb"
-                            android:letterSpacing="0.1"
-                            android:text="Email"
-                            android:textColor="@color/purple"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvEmail"

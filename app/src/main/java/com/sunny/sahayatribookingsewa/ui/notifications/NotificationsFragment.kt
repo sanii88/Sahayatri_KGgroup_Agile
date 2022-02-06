@@ -40,7 +40,6 @@ class NotificationsFragment : Fragment() {
     private lateinit var btnActiveTicket: Button
     private lateinit var btnLogout: Button
     private lateinit var editor : SharedPreferences.Editor
-    private lateinit var sharedPreferences: SharedPreferences;
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,10 +61,6 @@ class NotificationsFragment : Fragment() {
         btnHire = root.findViewById(R.id.btnHire)
         btnActiveTicket = root.findViewById(R.id.btnActiveTicket)
         btnLogout = root.findViewById(R.id.btnLogout)
-
-        sharedPreferences = activity?.getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)!!
-        editor = sharedPreferences.edit();
-
 
 //        CoroutineScope(Dispatchers.IO).launch {
 //            try {
@@ -94,24 +89,23 @@ class NotificationsFragment : Fragment() {
                 val userRepo = UserRepository()
                 val response = userRepo.getMe()
 
-
                 if (response.success == true) {
-                    tvName.text = response.data!!.username
-                    tvContact.text = response.data.phone
-//                    tvEmail.text = response.user.email
-//                    tvAddress.text = response.user.address
-                } else {
-//                    withContext(Main) {
-//                        Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
-//                    }
+                    val user = response.user!!
+
+                    withContext(Dispatchers.Main) {
+                        tvName.text = "${user.username}"
+                        tvContact.text = "${user.phone}"
+                        tvEmail.text = "${user.email}"
+                        tvAddress.text = "${user.address}"
+                    }
                 }
+
             } catch (ex: Exception) {
                 withContext(Main) {
-//                    Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, ex.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
 
 
         btnEditProfile.setOnClickListener {
